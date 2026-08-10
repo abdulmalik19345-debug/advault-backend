@@ -112,11 +112,13 @@ function createPostgresStore({ connectionString }) {
     let ssl;
     try {
         const parsed = new URL(connectionString);
-        if (!parsed.searchParams.has("sslmode")) ssl = true;
-    } catch {
-        ssl = true;
-    }
 
+        if (!parsed.searchParams.has("sslmode")) {
+            ssl = { rejectUnauthorized: false };
+        }
+    } catch {
+        ssl = { rejectUnauthorized: false };
+    }
     const poolOptions = {
         connectionString,
         max: 10,
