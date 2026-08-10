@@ -1,0 +1,842 @@
+<!doctype html>
+<html lang="en" data-api-base="">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdVault Spy — AI Ad Intelligence</title>
+  <meta name="description"
+    content="Scan webpages for ads, analyze the creative strategy behind them, generate marketing hooks, and discover business opportunities with AdVault Spy.">
+  <!-- TODO: Replace with the production canonical URL when the domain is live -->
+  <link rel="canonical" href="https://advaulte.com/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="AdVault Spy — AI Ad Intelligence">
+  <meta property="og:description"
+    content="Scan webpages for ads, analyze the creative strategy behind them, generate marketing hooks, and discover business opportunities with AdVault Spy.">
+  <!-- TODO: Replace with the production Open Graph image path when available -->
+  <meta property="og:image" content="https://advaulte.com/og-cover.png">
+  <meta name="theme-color" content="#090a0c">
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body id="top">
+
+  <!-- NAVBAR -->
+  <header class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#top" class="brand" aria-label="AdVault Spy home">
+        <span class="brand-mark" aria-hidden="true">A</span>
+        <span class="brand-name">AdVault <span>Spy</span></span>
+      </a>
+
+      <nav class="nav-links" id="navLinks" aria-label="Primary">
+        <a href="#product">Product</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="nav-actions">
+        <span class="nav-auth-out" id="navAuthOut">
+          <a href="#" class="nav-login" data-auth="login" data-track="nav_login">Log in</a>
+          <a href="#" class="btn btn-primary btn-sm nav-cta" data-auth="register" data-track="nav_cta">Start Free</a>
+          <a href="#" class="btn btn-ghost btn-sm nav-ext" data-extension data-track="nav_extension">Open Extension</a>
+        </span>
+        <span class="nav-auth-in is-hidden" id="navAuthIn">
+          <span class="account-wrap" id="accountWrap">
+            <button type="button" class="account-chip" id="accountChip" data-track="nav_account" aria-haspopup="true"
+              aria-expanded="false" aria-controls="accountDropdown">
+              <span class="account-chip-avatar" id="navAccountAvatar" aria-hidden="true">A</span>
+              <span class="account-chip-text" id="navAccountName">Account</span>
+              <span class="account-chip-caret" aria-hidden="true">▾</span>
+            </button>
+
+            <div class="account-dropdown is-hidden" id="accountDropdown" role="menu" aria-label="Account menu">
+              <div class="account-dropdown-head">
+                <span class="account-dropdown-email" id="ddEmail"></span>
+                <span class="plan-badge plan-badge-free" id="ddPlanBadge">Free plan</span>
+              </div>
+              <div class="account-dropdown-rows">
+                <div class="account-dd-row">
+                  <span class="account-dd-label">Usage today</span>
+                  <span class="account-dd-value" id="ddUsageToday">—</span>
+                </div>
+                <div class="account-dd-row">
+                  <span class="account-dd-label">Remaining scans</span>
+                  <span class="account-dd-value" id="ddRemaining">—</span>
+                </div>
+              </div>
+              <div class="account-dropdown-actions">
+                <button type="button" class="account-dd-btn is-hidden" id="ddUpgrade"
+                  data-track="account_upgrade">Upgrade to Pro</button>
+                <button type="button" class="account-dd-btn" id="ddManage" data-track="account_manage">Manage
+                  Account</button>
+                <button type="button" class="account-dd-btn account-dd-btn-danger" id="ddLogout"
+                  data-track="account_logout">Log out</button>
+              </div>
+            </div>
+          </span>
+          <button type="button" class="btn btn-ghost btn-sm nav-ext" data-extension data-track="nav_extension">Open
+            Extension</button>
+        </span>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false"
+          aria-controls="navLinks">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner">
+        <span class="chip chip-live"><span class="live-dot" aria-hidden="true"></span>v1.3.3</span>
+        <h1>See the ads.<br><span class="grad-text">Understand the strategy.</span></h1>
+        <p class="hero-sub">AdVault Spy lets marketers, agencies and growth teams scan webpages for ads, analyze the
+          creative strategy behind them, generate marketing hooks and discover business opportunities.</p>
+        <div class="hero-actions">
+          <a href="#" class="btn btn-primary" data-start-free data-track="hero_primary">Start Spying Free <span
+              aria-hidden="true">→</span></a>
+          <a href="#how-it-works" class="btn btn-ghost" data-track="hero_secondary">See How It Works</a>
+        </div>
+
+        <!-- HERO VISUAL: browser + extension mockup (illustrative, based on the real extension UI) -->
+        <div class="hero-visual"
+          aria-label="AdVault Spy extension scanning a page, detecting ads and ranking prospects">
+          <div class="browser">
+            <div class="browser-bar">
+              <span class="dot dot-red" aria-hidden="true"></span>
+              <span class="dot dot-amber" aria-hidden="true"></span>
+              <span class="dot dot-green" aria-hidden="true"></span>
+              <span class="browser-url"><span class="lock" aria-hidden="true"></span>example.com/landing</span>
+            </div>
+            <div class="browser-body">
+              <div class="page-lines" aria-hidden="true">
+                <span class="page-line page-line-lg"></span>
+                <span class="page-line page-line-md"></span>
+                <span class="page-line page-line-sm"></span>
+                <div class="page-blocks">
+                  <span class="page-block"></span>
+                  <span class="page-block"></span>
+                  <span class="page-block"></span>
+                </div>
+              </div>
+
+              <!-- Extension popup overlay (realistic UI based on popup.html) -->
+              <div class="ext-popup">
+                <div class="ext-topbar">
+                  <div class="ext-brand"><span class="ext-mark" aria-hidden="true">A</span><span
+                      class="ext-name">AdVault <b>Spy</b></span></div>
+                  <span class="ext-live"><span class="live-dot" aria-hidden="true"></span>LIVE</span>
+                </div>
+
+                <div class="ext-usage">
+                  <span class="ext-usage-plan">FREE PLAN</span>
+                  <span class="ext-usage-count">2 uses remaining today</span>
+                </div>
+
+                <div class="ext-metrics">
+                  <div class="ext-metric"><span class="ext-metric-label">ADS FOUND</span><span
+                      class="ext-metric-value">3</span></div>
+                  <div class="ext-metric ext-metric-accent"><span class="ext-metric-label">PROSPECTS</span><span
+                      class="ext-metric-value">2</span></div>
+                  <div class="ext-metric"><span class="ext-metric-label">SOURCE</span><span
+                      class="ext-metric-domain">example.com</span></div>
+                </div>
+
+                <div class="ext-results">
+                  <div class="ext-results-head"><span>AD INTELLIGENCE</span><span class="ext-badge">3</span></div>
+                  <!-- Illustrative example results -->
+                  <div class="ext-ad">
+                    <div class="ext-ad-top">
+                      <div class="ext-ad-head">
+                        <span class="ext-ad-brand">Nova Skincare</span>
+                        <span class="ext-ad-meta">video · skincare routine</span>
+                      </div>
+                      <span class="ext-ad-type">VIDEO</span>
+                    </div>
+                    <div class="ext-ad-copy">“Last chance at 40% off — the code expires tonight.”</div>
+                    <div class="ext-ad-actions">
+                      <span class="ext-btn ext-btn-ai">✨ Analyze AI</span>
+                      <span class="ext-btn ext-btn-ghost">🪝 Hooks</span>
+                      <span class="ext-btn ext-btn-ghost">📋 Copy</span>
+                    </div>
+                  </div>
+                  <div class="ext-ad">
+                    <div class="ext-ad-top">
+                      <div class="ext-ad-head">
+                        <span class="ext-ad-brand">Peak Analytics</span>
+                        <span class="ext-ad-meta">b2b · funnel tool</span>
+                      </div>
+                      <span class="ext-ad-type">IMAGE</span>
+                    </div>
+                    <div class="ext-ad-copy">“Your funnel leaks. We show you exactly where.”</div>
+                    <div class="ext-ad-actions">
+                      <span class="ext-btn ext-btn-ai">✨ Analyze AI</span>
+                      <span class="ext-btn ext-btn-ghost">🪝 Hooks</span>
+                      <span class="ext-btn ext-btn-ghost">📋 Copy</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="ext-results">
+                  <div class="ext-results-head"><span>LEAD INTELLIGENCE</span><span class="ext-badge">2</span></div>
+                  <div class="ext-prospect">
+                    <div class="ext-prospect-top">
+                      <div class="ext-ad-head">
+                        <span class="ext-ad-brand">Peak Analytics</span>
+                        <span class="ext-ad-meta">HOT PROSPECT · 2 ad signals</span>
+                      </div>
+                      <span class="ext-prospect-score"><b>86</b>/100</span>
+                    </div>
+                    <div class="ext-prospect-why">Matches advertising evidence for funnel analytics on this page.</div>
+                  </div>
+                </div>
+                <span class="ext-caption">Illustrative interface preview</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROBLEM -->
+    <section class="section section-alt" id="problem">
+      <div class="section-head reveal">
+        <span class="eyebrow">THE PROBLEM</span>
+        <h2>Competitor research eats your whole day.</h2>
+        <p>If you've ever tried to reverse-engineer a competitor's ad strategy, you already know how it feels.</p>
+      </div>
+      <div class="problem-grid reveal">
+        <article class="problem-card">
+          <span class="problem-icon" aria-hidden="true">▾</span>
+          <h3>Endless scrolling</h3>
+          <p>Hours spent moving through competitor ads, hoping to spot the pattern.</p>
+        </article>
+        <article class="problem-card">
+          <span class="problem-icon" aria-hidden="true">≋</span>
+          <h3>Noise over signal</h3>
+          <p>Too much content and not enough useful signal to act on.</p>
+        </article>
+        <article class="problem-card">
+          <span class="problem-icon" aria-hidden="true">✎</span>
+          <h3>Manual analysis</h3>
+          <p>Breaking down hooks and offers by hand, one ad at a time.</p>
+        </article>
+        <article class="problem-card">
+          <span class="problem-icon" aria-hidden="true">◎</span>
+          <h3>Missed prospects</h3>
+          <p>Difficulty identifying which businesses are actually promising.</p>
+        </article>
+        <article class="problem-card">
+          <span class="problem-icon" aria-hidden="true">⇄</span>
+          <h3>Tool-hopping</h3>
+          <p>Wasted time switching between tools to piece a picture together.</p>
+        </article>
+      </div>
+      <p class="problem-bridge reveal">AdVault turns that research into intelligence.</p>
+    </section>
+
+    <!-- HOW IT WORKS -->
+    <section class="section" id="how-it-works">
+      <div class="section-head reveal">
+        <span class="eyebrow">HOW IT WORKS</span>
+        <h2>From page to strategy in four steps</h2>
+        <p>No selectors, no setup. Open the extension on any page and follow the flow.</p>
+      </div>
+      <div class="steps">
+        <article class="step-card reveal">
+          <span class="step-num">01</span>
+          <h3>Scan</h3>
+          <p>Scan the page you're researching. AdVault detects ad candidates and advertising signals on the page you're
+            already viewing.</p>
+        </article>
+        <article class="step-card reveal">
+          <span class="step-num">02</span>
+          <h3>Analyze</h3>
+          <p>Understand ads, messaging, offers and creative signals. AI breaks down the positioning and marketing angle
+            behind each detected ad.</p>
+        </article>
+        <article class="step-card reveal">
+          <span class="step-num">03</span>
+          <h3>Discover</h3>
+          <p>Find business and prospect opportunities hidden in the page — businesses with advertising signals and
+            public data worth acting on.</p>
+        </article>
+        <article class="step-card reveal">
+          <span class="step-num">04</span>
+          <h3>Act</h3>
+          <p>Generate hooks, insights and actionable next steps, then export prospects to CSV for outreach and further
+            work.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRODUCT DEMO -->
+    <section class="section section-alt" id="product">
+      <div class="section-head reveal">
+        <span class="eyebrow">PRODUCT</span>
+        <h2>One ad becomes a full business decision</h2>
+        <p>Follow the path from a single page to scored prospects — using the extension's real flow.</p>
+      </div>
+
+      <ol class="demo-flow reveal">
+        <li class="demo-step">
+          <div class="demo-card">
+            <div class="demo-card-head"><span class="demo-step-num">01</span><span class="demo-card-label">PAGE</span>
+            </div>
+            <div class="demo-browser">
+              <div class="demo-browser-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+              <div class="demo-browser-url">example.com/landing</div>
+            </div>
+            <p class="demo-card-copy">Scan the page you're researching.</p>
+          </div>
+        </li>
+        <li class="demo-arrow" aria-hidden="true">↓</li>
+
+        <li class="demo-step">
+          <div class="demo-card">
+            <div class="demo-card-head"><span class="demo-step-num">02</span><span class="demo-card-label">DETECTED
+                ADS</span></div>
+            <div class="demo-ad">
+              <div class="demo-ad-top">
+                <div><span class="demo-ad-brand">Nova Skincare</span><span class="demo-ad-meta">video · skincare
+                    routine</span></div>
+                <span class="demo-ad-type">VIDEO</span>
+              </div>
+              <div class="demo-ad-copy">“Last chance at 40% off — the code expires tonight.”</div>
+              <div class="demo-actions"><span class="demo-btn demo-btn-ai">✨ Analyze AI</span><span class="demo-btn">🪝
+                  Hooks</span></div>
+            </div>
+            <p class="demo-card-copy">Ads, advertisers and advertising signals, detected from the page.</p>
+          </div>
+        </li>
+        <li class="demo-arrow" aria-hidden="true">↓</li>
+
+        <li class="demo-step">
+          <div class="demo-card">
+            <div class="demo-card-head"><span class="demo-step-num">03</span><span class="demo-card-label">AI
+                ANALYSIS</span></div>
+            <div class="demo-ai">
+              <div class="demo-ai-row"><span class="demo-ai-label">Viral Hooks</span><span class="demo-ai-value">“Last
+                  chance at 40% off — code expires tonight.”</span></div>
+              <div class="demo-ai-row"><span class="demo-ai-label">Improved Copy</span><span class="demo-ai-value">“Your
+                  routine changes in 30 seconds.”</span></div>
+              <div class="demo-ai-row"><span class="demo-ai-label">Marketing Angles</span><span
+                  class="demo-ai-value">Urgency · Before/After · Social Proof</span></div>
+              <div class="demo-ai-row"><span class="demo-ai-label">Why It Works</span><span class="demo-ai-value">Hard
+                  deadline plus a concrete discount.</span></div>
+            </div>
+            <p class="demo-card-copy">Hooks, improved copy, angles and reasoning for why the ad works.</p>
+          </div>
+        </li>
+        <li class="demo-arrow" aria-hidden="true">↓</li>
+
+        <li class="demo-step">
+          <div class="demo-card">
+            <div class="demo-card-head"><span class="demo-step-num">04</span><span class="demo-card-label">MARKETING
+                HOOKS</span></div>
+            <div class="demo-hooks">
+              <span class="demo-hook">“Watch this before your next routine…”</span>
+              <span class="demo-hook">“Most people don't know this about skincare.”</span>
+              <span class="demo-hook">“The 30-second routine getting noticed.”</span>
+            </div>
+            <p class="demo-card-copy">Alternative hooks and messaging angles to test.</p>
+          </div>
+        </li>
+        <li class="demo-arrow" aria-hidden="true">↓</li>
+
+        <li class="demo-step">
+          <div class="demo-card">
+            <div class="demo-card-head"><span class="demo-step-num">05</span><span class="demo-card-label">PROSPECT
+                INTELLIGENCE</span></div>
+            <div class="demo-prospect">
+              <div class="demo-prospect-top">
+                <div><span class="demo-prospect-brand">Peak Analytics</span><span class="demo-prospect-meta">HOT
+                    PROSPECT · 2 ad signals</span></div>
+                <span class="demo-prospect-score"><b>86</b>/100</span>
+              </div>
+              <div class="demo-prospect-why">Why: matches advertising evidence for funnel analytics on this page.</div>
+              <div class="demo-actions"><span class="demo-btn">Export CSV</span></div>
+            </div>
+            <p class="demo-card-copy">Scored opportunities with reasoning — export for outreach.</p>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="section" id="features">
+      <div class="section-head reveal">
+        <span class="eyebrow">FEATURES</span>
+        <h2>Built for people who study ads</h2>
+        <p>Every feature turns raw creative signals into something you can understand, reuse, and act on.</p>
+      </div>
+      <div class="feature-grid">
+        <article class="feature-card reveal">
+          <span class="feature-icon" aria-hidden="true">✦</span>
+          <div class="feature-head">
+            <h3>AI Ad Analysis</h3><span class="feature-status">Available now</span>
+          </div>
+          <p>Explain why an ad works and identify useful marketing angles — hooks, improved copy, angles and reasoning
+            behind each detected ad.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-icon" aria-hidden="true">🪝</span>
+          <div class="feature-head">
+            <h3>Marketing Hooks</h3><span class="feature-status">Available now</span>
+          </div>
+          <p>Generate alternative hooks and messaging angles across curiosity, social proof, problem, before/after,
+            urgency and profit.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-icon" aria-hidden="true">◎</span>
+          <div class="feature-head">
+            <h3>Ad Scoring</h3><span class="feature-status">Available now</span>
+          </div>
+          <p>Score creative and business opportunities on a 0–100 scale and explain the score with HOT, GOOD and
+            POSSIBLE tiers.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-icon" aria-hidden="true">↗</span>
+          <div class="feature-head">
+            <h3>Prospect Intelligence</h3><span class="feature-status">Available now</span>
+          </div>
+          <p>Identify promising businesses from the page and explain why they may be relevant — based on public data and
+            advertising evidence.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-icon" aria-hidden="true">▣</span>
+          <div class="feature-head">
+            <h3>Page Scraping</h3><span class="feature-status">Available now</span>
+          </div>
+          <p>Extract useful public page information — ads, advertisers and business signals — into structured data you
+            can review.</p>
+        </article>
+        <article class="feature-card reveal">
+          <span class="feature-icon" aria-hidden="true">◫</span>
+          <div class="feature-head">
+            <h3>Export</h3><span class="feature-status">Available now</span>
+          </div>
+          <p>Export useful prospect and ad intelligence to CSV for outreach, tracking and further work.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRODUCT PROOF -->
+    <section class="section section-alt" id="proof">
+      <div class="section-head reveal">
+        <span class="eyebrow">WHAT ADVAULT HELPS YOU UNCOVER</span>
+        <h2>Built for research, not vanity metrics</h2>
+        <p>No fake testimonials, no invented user counts. Here's the kind of signal AdVault surfaces from pages you
+          scan.</p>
+      </div>
+      <div class="proof-grid reveal">
+        <article class="proof-card">
+          <span class="proof-label">ADVERTISING SIGNALS</span>
+          <h3>Network, type and advertiser</h3>
+          <p>Every detected ad carries network, creative type and advertiser metadata from the page you're viewing.</p>
+        </article>
+        <article class="proof-card">
+          <span class="proof-label">CREATIVE STRATEGY</span>
+          <h3>Why an ad works</h3>
+          <p>AI analysis returns hooks, improved copy, marketing angles and reasoning — not just a screenshot.</p>
+        </article>
+        <article class="proof-card">
+          <span class="proof-label">RANKED PROSPECTS</span>
+          <h3>Scored, with a reason</h3>
+          <p>Prospects are ranked with a score and tier, and AdVault shows the evidence behind each rank.</p>
+        </article>
+        <article class="proof-card">
+          <span class="proof-label">EXPORTABLE OUTPUT</span>
+          <h3>CSV-ready intelligence</h3>
+          <p>Prospects, scores, ad signals and matched evidence export to CSV for your own pipeline.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section" id="pricing">
+      <div class="section-head reveal">
+        <span class="eyebrow">PRICING</span>
+        <h2>Start free. Scale when you need more.</h2>
+        <p>Simple plans for solo marketers, teams and agencies. Free accounts are live today — Pro and Agency billing
+          are coming soon.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="plan reveal">
+          <div class="plan-head">
+            <span class="plan-status plan-now">Available now</span>
+            <h3>Free</h3>
+            <div class="plan-price">$0<span class="plan-per">/month</span></div>
+          </div>
+          <ul class="plan-features">
+            <li>2 scans per day</li>
+            <li>Page scanning and ad detection</li>
+            <li>AI ad analysis</li>
+            <li>Marketing hook generation</li>
+            <li>Prospect discovery</li>
+          </ul>
+          <a href="#" class="btn btn-ghost btn-block" data-pricing="free" data-track="pricing_free">Start free</a>
+        </article>
+
+        <article class="plan plan-featured reveal">
+          <span class="plan-tag">MOST POPULAR</span>
+          <div class="plan-head">
+            <span class="plan-status plan-soon">Coming soon</span>
+            <h3>Pro</h3>
+            <div class="plan-price">$19<span class="plan-per">/month</span></div>
+          </div>
+          <ul class="plan-features">
+            <li>Unlimited scans</li>
+            <li>Advanced AI ad analysis</li>
+            <li>Full hook generator</li>
+            <li>Ad and prospect scoring</li>
+            <li>CSV export</li>
+          </ul>
+          <a href="#" class="btn btn-primary btn-block" data-pricing="pro" data-track="pricing_pro">Get Pro</a>
+        </article>
+
+        <article class="plan reveal">
+          <div class="plan-head">
+            <span class="plan-status plan-soon">Coming soon</span>
+            <h3>Agency</h3>
+            <div class="plan-price">$49<span class="plan-per">/month</span></div>
+          </div>
+          <ul class="plan-features">
+            <li>Everything in Pro</li>
+            <li>Higher usage limits</li>
+            <li>Team and agency workflows</li>
+            <li>Priority feature access</li>
+          </ul>
+          <a href="#" class="btn btn-ghost btn-block" data-pricing="agency" data-track="pricing_agency">Start with
+            Agency</a>
+        </article>
+      </div>
+      <p class="pricing-note reveal">Pro and Agency billing are not live yet. Free accounts work today — your Free plan
+        stays active until billing ships.</p>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section section-alt" id="faq">
+      <div class="section-head reveal">
+        <span class="eyebrow">FAQ</span>
+        <h2>Questions, answered</h2>
+      </div>
+      <div class="faq-list">
+        <details class="faq-item reveal">
+          <summary>What is AdVault Spy?</summary>
+          <p>AdVault Spy is a Chrome extension that scans the webpage you're viewing for ads, analyzes their creative
+            strategy with AI, generates marketing hooks, and identifies promising business prospects from public page
+            data.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How does scanning work?</summary>
+          <p>Open any webpage, click the AdVault Spy icon, and run a scan. The extension detects ad candidates and
+            advertising signals on the page you're already viewing, then builds an intelligence report you can explore,
+            analyze and export.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Is there a free plan?</summary>
+          <p>Yes. The Free plan includes 2 scans per day with page scanning, AI ad analysis, marketing hook generation
+            and prospect discovery.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>What are the Pro and Agency plans?</summary>
+          <p>Pro ($19/month) and Agency ($49/month) are planned as paid tiers with unlimited scans, advanced AI analysis
+            and higher limits. Billing is not live yet — no checkout is available today.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How does the Chrome extension work?</summary>
+          <p>Install the extension, open any public webpage, and run a scan. Everything is built around the page you're
+            currently viewing — you can sign in from the landing page and scan right away.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>How does AI analysis work?</summary>
+          <p>Detected ad text and details are sent to the product's analysis service, which returns viral hooks,
+            improved copy, marketing angles and an explanation of why the ad works. If the service is unavailable, the
+            extension shows a local fallback.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Does AdVault Spy scrape private information?</summary>
+          <p>No. AdVault works only with what is already publicly visible on the page you choose to inspect, and scans
+            run inside your browser. Review the extension's data handling before using it on sensitive pages.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>Can I use it for competitor research?</summary>
+          <p>Yes. Analyzing publicly displayed ads on a competitor's page is one of the core use cases for the tool.</p>
+        </details>
+        <details class="faq-item reveal">
+          <summary>When will accounts and billing be available?</summary>
+          <p>Accounts are live now — sign up free from any "Start Free" button on this page. Pro and Agency billing are
+            still in development.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section" id="cta">
+      <div class="install-card reveal">
+        <span class="eyebrow">GET STARTED</span>
+        <h2>Stop scrolling. Start understanding.</h2>
+        <p>Turn the ads you discover into actionable marketing intelligence.</p>
+        <a href="#" class="btn btn-primary btn-lg" data-start-free data-track="cta_primary">Start Spying Free <span
+            aria-hidden="true">→</span></a>
+        <span class="install-note" id="cta-note">Sign up free to unlock your Free plan (2 scans per day). Pro billing is
+          coming soon.</span>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#top" class="brand" aria-label="AdVault Spy home">
+          <span class="brand-mark" aria-hidden="true">A</span>
+          <span class="brand-name">AdVault <span>Spy</span></span>
+        </a>
+        <p>AI ad intelligence and prospecting, inside your browser.</p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#product">Product</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#pricing">Pricing</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Account</h4>
+          <ul>
+            <!-- TODO: Link to real login page when accounts ship -->
+            <li><a href="#" data-auth="login" data-track="footer_login">Log in</a></li>
+            <!-- TODO: Link to real privacy page when published -->
+            <li><a href="#" data-placeholder="privacy" data-track="footer_privacy">Privacy</a></li>
+            <!-- TODO: Link to real terms page when published -->
+            <li><a href="#" data-placeholder="terms" data-track="footer_terms">Terms</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year">2026</span> AdVault Spy</span>
+      <span>v1.3.3</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <!-- AUTH MODAL -->
+  <div class="modal-backdrop is-hidden" id="authModal" role="dialog" aria-modal="true" aria-labelledby="authModalTitle">
+    <div class="modal">
+      <button type="button" class="modal-close" id="authModalClose"
+        aria-label="Close authentication dialog">&times;</button>
+
+      <div class="auth-tabs" role="tablist" aria-label="Authentication mode">
+        <button type="button" class="auth-tab is-active" id="authTabLogin" role="tab" aria-selected="true"
+          aria-controls="loginForm" data-auth-tab="login">Log in</button>
+        <button type="button" class="auth-tab" id="authTabRegister" role="tab" aria-selected="false"
+          aria-controls="registerForm" data-auth-tab="register">Create account</button>
+      </div>
+
+      <!-- LOGIN FORM -->
+      <form class="auth-form" id="loginForm" role="tabpanel" aria-labelledby="authTabLogin" novalidate>
+        <h2 id="authModalTitle">Welcome back</h2>
+        <p class="auth-subtitle">Sign in to continue using AdVault Spy.</p>
+
+        <div class="form-group">
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" name="email" autocomplete="username" required
+            aria-describedby="loginEmailError">
+          <span class="form-error" id="loginEmailError" aria-live="polite"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="password" autocomplete="current-password" required
+            aria-describedby="loginPasswordError">
+          <span class="form-error" id="loginPasswordError" aria-live="polite"></span>
+        </div>
+
+        <div class="auth-forgot">
+          <a href="#" data-auth="forgot">Forgot password?</a>
+        </div>
+
+        <div class="auth-resend is-hidden" id="loginResendVerification">
+          <a href="#" data-auth="resend-verification">Didn't verify your email? Resend verification link</a>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block auth-submit" id="loginSubmit">
+          <span class="btn-text">Sign in</span>
+          <span class="btn-loading is-hidden" aria-hidden="true">Signing in&hellip;</span>
+        </button>
+
+        <p class="auth-switch">Don't have an account? <a href="#" data-auth-switch="register">Create one free</a></p>
+      </form>
+
+      <!-- REGISTER FORM -->
+      <form class="auth-form is-hidden" id="registerForm" role="tabpanel" aria-labelledby="authTabRegister" novalidate>
+        <h2>Create your free account</h2>
+        <p class="auth-subtitle">Start with 2 scans per day &mdash; upgrade anytime.</p>
+
+        <div class="form-group">
+          <label for="registerEmail">Email</label>
+          <input type="email" id="registerEmail" name="email" autocomplete="email" required
+            aria-describedby="registerEmailError">
+          <span class="form-error" id="registerEmailError" aria-live="polite"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="registerPassword">Password</label>
+          <input type="password" id="registerPassword" name="password" autocomplete="new-password" required
+            minlength="8" aria-describedby="registerPasswordError registerPasswordHint">
+          <span class="form-hint" id="registerPasswordHint">At least 8 characters</span>
+          <span class="form-error" id="registerPasswordError" aria-live="polite"></span>
+        </div>
+
+        <div class="form-group">
+          <label for="registerConfirm">Confirm password</label>
+          <input type="password" id="registerConfirm" name="confirmPassword" autocomplete="new-password" required
+            aria-describedby="registerConfirmError">
+          <span class="form-error" id="registerConfirmError" aria-live="polite"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block auth-submit" id="registerSubmit">
+          <span class="btn-text">Create free account</span>
+          <span class="btn-loading is-hidden" aria-hidden="true">Creating account&hellip;</span>
+        </button>
+
+        <p class="auth-switch">Already have an account? <a href="#" data-auth-switch="login">Log in</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- PASSWORD RESET MODAL -->
+  <div class="modal-backdrop is-hidden" id="resetPasswordModal" role="dialog" aria-modal="true" aria-labelledby="resetPasswordModalTitle">
+    <div class="modal">
+      <button type="button" class="modal-close" id="resetPasswordModalClose" aria-label="Close password reset dialog">&times;</button>
+
+      <form class="auth-form" id="forgotPasswordForm" novalidate>
+        <h2 id="resetPasswordModalTitle">Reset your password</h2>
+        <p class="auth-subtitle">Enter your email and we'll send you a secure password reset link.</p>
+        <div class="form-group">
+          <label for="forgotEmail">Email</label>
+          <input type="email" id="forgotEmail" name="email" autocomplete="email" required aria-describedby="forgotEmailError">
+          <span class="form-error" id="forgotEmailError" aria-live="polite"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block auth-submit" id="forgotSubmit">
+          <span class="btn-text">Send reset link</span>
+          <span class="btn-loading is-hidden" aria-hidden="true">Sending&hellip;</span>
+        </button>
+        <p class="auth-switch"><a href="#" data-reset-back="login">Back to log in</a></p>
+      </form>
+
+      <form class="auth-form is-hidden" id="resetPasswordForm" novalidate>
+        <h2>Choose a new password</h2>
+        <p class="auth-subtitle">Your reset link is valid for a limited time and can only be used once.</p>
+        <div class="form-group">
+          <label for="resetPassword">New password</label>
+          <input type="password" id="resetPassword" name="password" autocomplete="new-password" required minlength="8" aria-describedby="resetPasswordError">
+          <span class="form-error" id="resetPasswordError" aria-live="polite"></span>
+        </div>
+        <div class="form-group">
+          <label for="resetConfirm">Confirm new password</label>
+          <input type="password" id="resetConfirm" name="confirmPassword" autocomplete="new-password" required aria-describedby="resetConfirmError">
+          <span class="form-error" id="resetConfirmError" aria-live="polite"></span>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block auth-submit" id="resetSubmit">
+          <span class="btn-text">Reset password</span>
+          <span class="btn-loading is-hidden" aria-hidden="true">Resetting&hellip;</span>
+        </button>
+        <p class="auth-switch"><a href="#" data-reset-back="login">Back to log in</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- ACCOUNT MODAL (for authenticated users) -->
+  <div class="modal-backdrop is-hidden" id="accountModal" role="dialog" aria-modal="true"
+    aria-labelledby="accountModalTitle">
+    <div class="modal modal-account">
+      <button type="button" class="modal-close" id="accountModalClose"
+        aria-label="Close account dialog">&times;</button>
+
+      <div class="account-header">
+        <div class="account-avatar" id="accountAvatar" aria-hidden="true"></div>
+        <div class="account-info">
+          <h2 id="accountModalTitle">Account</h2>
+          <p class="account-email" id="accountEmail"></p>
+          <span class="plan-badge" id="accountPlanBadge"></span>
+        </div>
+      </div>
+
+      <div class="account-details">
+        <dl class="account-grid">
+          <dt>Plan</dt>
+          <dd id="accountPlan">Free</dd>
+
+          <dt>Subscription</dt>
+          <dd id="accountSubscription">None</dd>
+
+          <dt>Scans used today</dt>
+          <dd id="accountUsage">0 / 2</dd>
+
+          <dt>Resets</dt>
+          <dd id="accountReset">Tomorrow</dd>
+
+          <dt>Member since</dt>
+          <dd id="accountCreated"></dd>
+        </dl>
+      </div>
+
+      <div class="account-actions">
+        <button type="button" class="btn btn-primary btn-block" id="accountUpgrade" data-track="account_upgrade">Upgrade
+          to Pro</button>
+        <button type="button" class="btn btn-ghost btn-block" id="accountLogout" data-track="account_logout">Log
+          out</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- VERIFICATION PENDING MODAL -->
+  <div class="modal-backdrop is-hidden" id="verificationModal" role="dialog" aria-modal="true"
+    aria-labelledby="verificationModalTitle">
+    <div class="modal">
+      <div class="verification-content" id="verificationContent">
+        <div class="verification-icon" aria-hidden="true">📧</div>
+        <h2 id="verificationModalTitle">Check your email</h2>
+        <p class="verification-subtitle">We've sent a verification link to:</p>
+        <p class="verification-email" id="verificationEmail"></p>
+        <p class="verification-desc">Click the link in your email to activate your AdVault Spy account.</p>
+
+        <div class="verification-actions">
+          <button type="button" class="btn btn-ghost btn-block" id="resendVerificationBtn" data-track="verification_resend">
+            Didn't receive it? Resend verification email
+          </button>
+          <button type="button" class="btn btn-secondary btn-block" id="changeEmailBtn" data-track="verification_change_email">
+            Change email / Back
+          </button>
+        </div>
+      </div>
+      <div class="verification-success is-hidden" id="verificationSuccess">
+        <div class="verification-icon success" aria-hidden="true">✓</div>
+        <h2>Email verified!</h2>
+        <p class="verification-desc">Your AdVault Spy account is now active.</p>
+        <div class="verification-actions">
+          <button type="button" class="btn btn-primary btn-block" id="verificationLoginBtn" data-track="verification_login">
+            Log in
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
