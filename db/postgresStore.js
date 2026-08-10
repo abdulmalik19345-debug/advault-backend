@@ -97,6 +97,17 @@ function nowIso() {
 }
 
 function createPostgresStore({ connectionString }) {
+    const USER_COLUMNS = `
+    id,
+    email,
+    password_hash AS "passwordHash",
+    plan,
+    subscription_status AS "subscriptionStatus",
+    paypal_subscription_id AS "paypalSubscriptionId",
+    email_verified_at AS "emailVerifiedAt",
+    created_at AS "createdAt",
+    updated_at AS "updatedAt"
+    `;
     if (!connectionString || typeof connectionString !== "string") {
         throw new Error(
             "DB_ENGINE=postgres requires DATABASE_URL (the Supabase " +
