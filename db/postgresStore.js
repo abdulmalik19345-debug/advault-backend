@@ -476,13 +476,20 @@ function createPostgresStore({ connectionString }) {
 
         // ---- Misc ----
         async ping() {
-            try {
-                await ensureSchema();
-                await pool.query("SELECT 1");
-                return true;
-            } catch {
+             try {
+                 await ensureSchema();
+                 await pool.query("SELECT 1");
+                 return true;
+             } catch (err) {
+                 console.error("[AdVault Spy] PostgreSQL ping failed:", {
+                     message: err?.message,
+                     code: err?.code,
+                     name: err?.name,
+                     detail: err?.detail,
+                     hint: err?.hint,
+                });
                 return false;
-            }
+             }
         },
 
         async close() {
