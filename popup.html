@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AdVault Spy</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="app">
+
+    <!-- ============================================================
+         APP VIEW — opens immediately (no authentication required)
+    ============================================================ -->
+    <div id="appView" class="app-view">
+
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark" aria-hidden="true"><span>A</span></div>
+          <div class="brand-copy">
+            <div class="brand-name">AdVault <span>Spy</span></div>
+            <div class="brand-meta">Prospecting intelligence</div>
+          </div>
+        </div>
+        <div class="top-actions">
+          <div class="status-chip"><span class="live-dot"></span><span>LIVE</span></div>
+        </div>
+      </header>
+
+      <section class="usage-card" aria-label="Plan usage">
+        <span id="usagePlan" class="usage-plan">FREE PLAN</span>
+        <span id="usageCount" class="usage-count">2 uses remaining today</span>
+      </section>
+
+      <section class="hero-card">
+        <div class="hero-topline">
+          <div class="eyebrow">PROSPECTING WORKSPACE</div>
+          <div id="pageType" class="source-pill">WEB</div>
+        </div>
+        <div class="hero-title">Find businesses worth talking to.</div>
+        <div class="hero-copy">Scan the page, detect advertising signals, and rank the strongest AdVault opportunities.</div>
+
+        <div class="page-context">
+          <div class="page-favicon">◉</div>
+          <div class="page-context-copy">
+            <div id="pageTitle" class="page-title">Current webpage</div>
+            <div id="pageUrl" class="page-url">Ready to scan</div>
+          </div>
+        </div>
+
+        <button id="scanBtn" class="scan-button">
+          <span class="scan-button-icon" id="scanIcon">↗</span>
+          <span id="scanBtnLabel">Scan Page</span>
+          <span class="scan-button-arrow">→</span>
+        </button>
+        <div class="scan-note"><span class="spark">✦</span> Ads, advertisers and public business signals</div>
+      </section>
+
+      <section id="usageBlock" class="usage-block hidden" aria-label="Free usage limit reached">
+        <div class="usage-block-icon" aria-hidden="true">⚡</div>
+        <div class="usage-block-title">You've reached today's 2 free uses.</div>
+        <div class="usage-block-copy">Upgrade to Pro for unlimited access.</div>
+        <button id="usageUpgradeBtn" class="pro-button pro-upgrade usage-upgrade-button" aria-label="Upgrade to AdVault Pro for unlimited access">
+          <span aria-hidden="true">⚡</span>
+          <span>Upgrade to Pro →</span>
+        </button>
+      </section>
+
+      <div id="status" class="status-bar hidden"><span id="statusIcon">•</span><span id="statusText">Ready</span></div>
+
+      <section class="metric-grid" aria-label="Scan summary">
+        <div class="metric-card">
+          <div class="metric-label">ADS FOUND</div>
+          <div id="summaryAds" class="metric-value">0</div>
+          <div class="metric-foot">promotions</div>
+        </div>
+        <div class="metric-card accent-card">
+          <div class="metric-label">PROSPECTS</div>
+          <div id="prospectCount" class="metric-value">0</div>
+          <div class="metric-foot">qualified leads</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-label">SOURCE</div>
+          <div id="summaryDomain" class="metric-domain">Current page</div>
+          <div class="metric-foot">scan context</div>
+        </div>
+      </section>
+
+      <section id="results" class="results hidden">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">AD INTELLIGENCE</div>
+            <div class="section-title">Detected promotions</div>
+          </div>
+          <div id="adCount" class="count-badge">0</div>
+        </div>
+        <div id="adList" class="ad-list"></div>
+      </section>
+
+      <section id="prospectSection" class="results prospect-results hidden">
+        <div class="section-head">
+          <div>
+            <div class="eyebrow">LEAD INTELLIGENCE</div>
+            <div class="section-title">Best prospects</div>
+          </div>
+          <div class="section-actions">
+            <div id="prospectCountBadge" class="count-badge">0</div>
+          </div>
+        </div>
+        <div class="section-copy">Ranked by public business data and advertising evidence from this page.</div>
+        <div class="action-row">
+          <button id="findProspectsBtn" class="primary-button"><span>Find Prospects</span><span>→</span></button>
+          <button id="exportProspectsBtn" class="secondary-button hidden">Export CSV</button>
+        </div>
+        <div id="prospectStatus" class="status-inline hidden"></div>
+        <div id="prospectList" class="prospect-list"></div>
+      </section>
+
+      <section id="emptyState" class="empty-state">
+        <div class="empty-head">
+          <div class="empty-icon"><span>✦</span></div>
+          <div>
+            <div class="eyebrow">HOW ADVAULT WORKS</div>
+            <div class="empty-title">From page to pipeline.</div>
+          </div>
+        </div>
+        <div class="workflow">
+          <div class="workflow-step">
+            <div class="step-number">01</div>
+            <div><strong>Scan</strong><span>Read the current page</span></div>
+          </div>
+          <div class="workflow-line"></div>
+          <div class="workflow-step">
+            <div class="step-number">02</div>
+            <div><strong>Qualify</strong><span>Match ads + business signals</span></div>
+          </div>
+          <div class="workflow-line"></div>
+          <div class="workflow-step">
+            <div class="step-number">03</div>
+            <div><strong>Pitch</strong><span>Turn evidence into outreach</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="pro-card" aria-label="Upgrade to AdVault Pro">
+        <div class="pro-head">
+          <div>
+            <div class="eyebrow">ADVAULT PRO</div>
+            <div class="section-title">Unlock advanced ad intelligence</div>
+          </div>
+          <div class="pro-badge" aria-hidden="true">PRO</div>
+        </div>
+        <p class="pro-copy">Advanced ad intelligence, prospecting insights and higher limits.</p>
+        <div class="pro-actions">
+          <button id="upgradeProBtn" class="pro-button pro-upgrade" aria-label="Upgrade to AdVault Pro">
+            <span aria-hidden="true">⚡</span>
+            <span>Upgrade to Pro</span>
+          </button>
+          <button id="visitAdVaultBtn" class="pro-button pro-visit" aria-label="Visit the AdVault landing page">
+            <span aria-hidden="true">🌐</span>
+            <span>Visit AdVault</span>
+          </button>
+        </div>
+      </section>
+
+      <div id="aiPanel" class="overlay hidden">
+        <div class="analysis-panel">
+          <div class="panel-header"><div><div class="eyebrow">AI INTELLIGENCE</div><div class="panel-title">Creative Analysis</div></div><button id="aiClose" class="close-button">×</button></div>
+          <div id="aiTarget" class="analysis-target">Selected advertisement</div>
+          <div class="analysis-section"><div class="analysis-label">Viral Hooks</div><div id="aiHooks" class="analysis-content hook-results">—</div></div>
+          <div class="analysis-section"><div class="analysis-label">Improved Copy</div><div id="aiCopy" class="analysis-content copy-result">—</div></div>
+          <div class="analysis-section"><div class="analysis-label">Marketing Angles</div><div id="aiAngles" class="analysis-content angle-results">—</div></div>
+          <div class="analysis-section"><div class="analysis-label">Why It Works</div><div id="aiWhy" class="analysis-content why-result">—</div></div>
+        </div>
+      </div>
+
+      <div id="hooksPanel" class="overlay hidden">
+        <div class="analysis-panel">
+          <div class="panel-header"><div><div class="eyebrow">COPY INTELLIGENCE</div><div class="panel-title">Hook Generator</div></div><button id="hooksClose" class="close-button">×</button></div>
+          <div id="hooksTarget" class="analysis-target">Selected advertisement</div>
+          <div class="hook-toolbar"><span>AI-generated variations</span><button id="copyAllHooks" class="secondary-button">Copy All</button></div>
+          <div id="hooksList" class="generated-hooks"><div class="panel-loading">Generate hooks to see results.</div></div>
+        </div>
+      </div>
+
+      <!-- Account and subscription management live on the AdVault website
+           (see the "Upgrade to Pro" / "Visit AdVault" buttons above). -->
+      <div id="toast" class="toast hidden">Copied to clipboard</div>
+      <footer class="footer"><span>AdVault Spy</span><span>v1.3.3</span></footer>
+    </div>
+  </main>
+  <script src="popup.js"></script>
+  <script>
+    // Keep the metric badge in sync with the existing prospect counter without touching the engine.
+    const prospectCount = document.getElementById('prospectCount');
+    const prospectCountBadge = document.getElementById('prospectCountBadge');
+    const syncProspectBadge = () => { if (prospectCountBadge) prospectCountBadge.textContent = prospectCount?.textContent || '0'; };
+    if (prospectCount) new MutationObserver(syncProspectBadge).observe(prospectCount, { childList: true, characterData: true, subtree: true });
+    syncProspectBadge();
+  </script>
+</body>
+</html>
