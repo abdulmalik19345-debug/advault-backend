@@ -8,11 +8,17 @@
      UTIL HELPERS
      ============================================================ */
   function normalizeEmail(value) {
-    if (typeof value !== "string") return null;
-    var email = value.trim().toLowerCase();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return null;
-    return email;
+  if (typeof value !== "string") return null;
+
+  var email = value.trim().toLowerCase();
+
+  // Basic but correct email validation.
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+    return null;
   }
+
+  return email;
+}
 
   function friendlyStatus(status) {
     var s = String(status || "NONE").trim().toUpperCase();
