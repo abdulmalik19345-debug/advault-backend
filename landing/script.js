@@ -610,10 +610,44 @@
   }
 
   function handleForgotPassword(e) {
-    if (e) e.preventDefault();
-    var emailInput = document.getElementById("loginEmail");
-    openForgotPasswordModal(emailInput ? normalizeEmail(emailInput.value) : "");
+  if (e) e.preventDefault();
+
+  var emailInput = document.getElementById("loginEmail");
+  var email = normalizeEmail(emailInput && emailInput.value);
+
+  if (!email) {
+    setFieldError(emailInput, "Enter your email address first.");
+    if (emailInput) emailInput.focus();
+    return;
   }
+
+  setFieldError(emailInput, "");
+
+  apiRequest("/auth/forgot-password", {
+    method: "POST",
+    body: { email: email },
+  })
+    .then(function (res) {
+      if (res.ok) {
+        showToast(
+          "If an account exists for this email, password reset instructions have been sent."
+        );
+      } else {
+        var msg = friendlyApiError(
+          res.status,
+          res.data && (res.data.message || res.data.error)
+        );
+        showToast(msg, "error");
+      }
+    })
+    .catch(function (err) {
+      console.error("[AdVault Spy] Forgot password request failed:", err);
+      showToast(
+        "Unable to connect to AdVault right now. Please try again.",
+        "error"
+      );
+    });
+}
 
   function handleForgotPasswordSubmit(e) {
     if (e) e.preventDefault();
