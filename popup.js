@@ -2936,19 +2936,3 @@
     }
 
 })();
-// Keep the metric badge in sync with the existing prospect counter without touching the engine.
-const prospectCount = document.getElementById('prospectCount');
-const prospectCountBadge = document.getElementById('prospectCountBadge');
-const syncProspectBadge = () => {
-    if (prospectCountBadge) {
-        prospectCountBadge.textContent = prospectCount?.textContent || '0';
-    }
-};
-if (prospectCount) {
-    new MutationObserver(syncProspectBadge).observe(prospectCount, {
-        childList: true,
-        characterData: true,
-        subtree: true
-    });
-}
-syncProspectBadge();
