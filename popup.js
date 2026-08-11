@@ -10,7 +10,7 @@
     // development server; point this at your deployed backend in
     // production (e.g. "https://advault-backend.onrender.com").
     const API_BASE_URL =
-        "http://localhost:3000";
+        "https://advault-backend.onrender.com";
 
     const API_URL =
         `${API_BASE_URL}/analyze`;
