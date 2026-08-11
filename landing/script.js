@@ -998,7 +998,11 @@
       else if (action === "register") openAuthModal("register");
       else if (action === "account") openAccountModal();
       else if (action === "logout") handleLogout(e);
-      else if (action === "forgot") handleForgotPassword(e);
+      else if (action === "forgot") {
+        var loginEmail = document.getElementById("loginEmail");
+        var email = loginEmail ? normalizeEmail(loginEmail.value) : null;
+        openForgotPasswordModal(email || "");
+      }
     });
   });
 
